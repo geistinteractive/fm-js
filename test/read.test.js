@@ -9,8 +9,8 @@ const client = require('./client');
 describe( 'read' , function() {
   it('should read a record' , function( ) {
     return client.read({
-      db: 'data', layout:'Customers', id : 'A009461A-EFEB-476C-8B0C-D3E39B86C96F'
+      db: 'ContactsTest', layout:'userTable', id : 1
     }).then((result)=>{
-      expect(result).to.be.an('object')})
+      expect(result.data[0].id).to.be('1')})
   });
 });

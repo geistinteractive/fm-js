@@ -8,13 +8,13 @@ const client = require('./client');
 describe( 'update' , function() {
   it('should update a record' , function( ) {
     return client.update({
-      db:'data', layout : 'Customers', id : 'A009461A-EFEB-476C-8B0C-D3E39B86C96F',
+      db:'ContactsTest', layout : 'userTable', id : 1,
       data : {
-        name : "new data"
+        age : 13
       }
     })
       .then((record)=>{
-        expect(record).to.be.an('object');
+        expect(record.data[0].age).to.be('13');
       })
   })
 })

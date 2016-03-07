@@ -5,27 +5,27 @@
 const expect = require('expect.js');
 const client = require('./client');
 
-describe( 'create or update' , function() {
+describe( 'createOrUpdate' , function() {
   it('should update a record' , function( ) {
     return client.createOrUpdate({
-        db:'data', layout : 'Customers', query : {id:'A009461A-EFEB-476C-8B0C-D3E39B86C96F'},
+        db:'ContactsTest', layout : 'userTable', query : {first_name:'Jimmy'},
         data : {
-          name : "new data2"
+          age : "12"
         }
       })
       .then((record)=>{
-        expect(record).to.be.an('object');
+        expect(record.data[0].age).to.be('12');
       })
   });
-  it.only('should create a record' , function( ) {
+  it('should create a record' , function( ) {
     return client.createOrUpdate({
-        db:'data', layout : 'Customers', query : {id:'Sdasdas'},
+        db:'ContactsTest', layout : 'userTable', query : {firstName:'Sdasdadcasdcasdcs'},
         data : {
-          name : "new data3"
+          age : 13
         }
       })
       .then((record)=>{
-        expect(record).to.be.an('object');
+        expect(record.data[0].age).to.be('13');
       })
   })
 })

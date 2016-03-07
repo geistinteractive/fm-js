@@ -8,13 +8,13 @@ const client = require('./client');
 
 describe( 'find' , function() {
   it('should find some records' , function( ) {
-    return client.find({db: 'data', layout:'Customers'}).then((result)=>{
-      expect(result).to.be.an('object')})
+    return client.find({db: 'ContactsTest', layout:'userTable'}).then((result)=>{
+      expect(result.data).to.be.an('array')})
   });
 
   it('should find some records given a callback' , function( done) {
-    client.find({db: 'data', layout: 'Customers'}, (err, result) => {
-      expect(result).to.be.an('object')
+    client.find({db: 'ContactsTest', layout: 'userTable'}, (err, result) => {
+      expect(result.data).to.be.an('array')
       done()
     })
   })

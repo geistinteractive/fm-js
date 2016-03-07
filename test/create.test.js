@@ -9,12 +9,13 @@ const client = require('./client');
 describe( 'create' , function() {
   it('should create a record' , function( ) {
     return client.create({
-      db: 'data',
-      layout:'Customers',
-      data : {name : 'tester'}
+      db: 'ContactsTest',
+      layout:'userTable',
+      data : {first_name : 'tester'}
     })
       .then((result)=>{
-      expect(result).to.be.an('object')})
+        expect(result).to.be.an('object')
+        expect(result.data[0].first_name).to.be('tester')
+      });
   });
-
 });

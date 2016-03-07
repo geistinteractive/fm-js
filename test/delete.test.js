@@ -8,11 +8,12 @@ const expect = require('expect.js');
 const client = require('./client');
 
 
-describe.skip( 'delete' , function() {
+describe( 'delete' , function() {
   it('should read a record' , function( ) {
     return client.destroy({
-      db: 'data', layout:'Customers', id : 'DELETE'
+      db: 'ContactsTest', layout:'userTable', id : 2
     }).then((result)=>{
-      expect(result).to.be.an('object')})
+      // I think this might need to return the actual deleted record.
+      expect(result.error).to.be('0')})
   });
 });
