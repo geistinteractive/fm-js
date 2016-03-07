@@ -1,0 +1,33 @@
+{
+  "name": "fm-js",
+  "version": "0.1.0",
+  "description": "a FileMaker client for node and the browser",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geistinteractive/fm-js.git"
+  },
+  "keywords": [
+    "filemaker",
+    "fms-api"
+  ],
+  "author": "Todd Geist <todd@geistinteractive.com> (http://www.geisintertactive.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/geistinteractive/fm-js/issues"
+  },
+  "homepage": "https://github.com/geistinteractive/fm-js#readme",
+  "dependencies": {
+    "bluebird": "^3.3.3",
+    "http-client": "^2.2.0",
+    "isomorphic-fetch": "^2.2.1",
+    "qs": "^6.1.0"
+  },
+  "devDependencies": {
+    "dotenv": "^2.0.0",
+    "expect.js": "^0.3.1"
+  }
+}
