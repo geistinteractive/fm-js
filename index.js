@@ -13,6 +13,7 @@ const validate = (options)=>{
   return true
 };
 
+
 /**
  *
  * @param promise
@@ -28,6 +29,7 @@ const promiseOrCallback = (promise, cb )=>{
   }
 
 };
+
 
 /**
  * parses the JSON from a response
@@ -215,9 +217,7 @@ const createClient = (options)=>{
 
       });
 
-
   };
-
 
   return {
 
@@ -231,6 +231,4 @@ const createClient = (options)=>{
 
 };
 
-module.exports = createClient
-
-
+module.exports = createClient;
