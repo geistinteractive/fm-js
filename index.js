@@ -36,7 +36,11 @@ const promiseOrCallback = (promise, cb )=>{
  */
 const parseJSON = (response) => {
 
-  return response.json()
+  if (!response.ok) throw new Error(response.status + ': ' +response.statusText);
+
+  return response
+    .json()
+    .catch((err)=>{ throw new Error("Failed to parse JSON from Response")})
 
 };
 
@@ -191,18 +195,26 @@ const createClient = (options)=>{
    * @param cb
    */
   const createOrUpdate = (options, cb)=>{
-    let tryToFindRecord = find(options);
 
-    return tryToFindRecord.then((result)=>{
-      if(result.data && result.data.length < 1){
-        return create(options)
-      }else{
-        delete options.query;
-        options.id = result.data[0].id
-        return update(options)
-      }
+    return find(options).then((result)=>{
 
-    })
+        if(result.error==='401'){
+
+          // can't find a record, so create one.
+          return create(options)
+
+        }else{
+
+          // found one, grab it's id and update it.
+          // TODO handle found sets of records
+          delete options.query;
+          options.id = result.data[0].id
+          return update(options)
+
+        }
+
+      });
+
 
   };
 

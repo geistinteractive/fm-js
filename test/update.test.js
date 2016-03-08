@@ -3,7 +3,7 @@
  * Created by toddgeist on 3/6/16.
  */
 const expect = require('expect.js');
-const client = require('./client');
+const client = require('./client').client;
 
 describe( 'update' , function() {
   it('should update a record' , function( ) {

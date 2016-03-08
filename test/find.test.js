@@ -3,7 +3,10 @@
  * Created by toddgeist on 3/6/16.
  */
 const expect = require('expect.js');
-const client = require('./client');
+const client = require('./client').client;
+
+const badPasswordClient = require('./client').badPasswordClient;
+const badURLClient = require('./client').badURLClient;
 
 
 describe( 'find' , function() {
@@ -18,4 +21,23 @@ describe( 'find' , function() {
       done()
     })
   })
+
+  describe( 'Bad Password' , function() {
+    it('should return an error' , function( done ) {
+      badPasswordClient.find({db: 'ContactsTest', layout: 'userTable'}, (err, result) => {
+        expect(err).to.be.a(Error);
+        done()
+      })
+    })
+  });
+
+  describe( 'Bad URL' , function() {
+    it('should return an error' , function( done ) {
+      badURLClient.find({db: 'ContactsTest', layout: 'userTable'}, (err, result) => {
+        expect(err).to.be.a(Error);
+        done()
+      })
+    })
+  })
+
 });
