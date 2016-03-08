@@ -194,9 +194,9 @@ const createClient = (options)=>{
     let tryToFindRecord = find(options);
 
     return tryToFindRecord.then((result)=>{
-      if(result.error || result.error===401){
+      if(result.data && result.data.length < 1){
         return create(options)
-      }else if(!result.error){
+      }else{
         delete options.query;
         options.id = result.data[0].id
         return update(options)
